@@ -1,0 +1,61 @@
+//Assg11 load balancer 
+
+#!/bin/bash 
+apt-get update 
+apt-get install -y nginx 
+systemctl start nginx 
+systemctl enable nginx 
+apt-get install -y git
+curl -SL https://deb.nodesource.com/setup_16.x|sudo -E bash - 
+apt-get install -y nodejs 
+git clone https://github.com/Codelearner236/AWS-Project.git 
+cd AWS-Project 
+npm install 
+node index.js
+
+sudo nano infi.sh
+
+#!/bin/bash
+while(true)
+do
+    echo "Inside loop"
+done
+
+sudo chmod +x infi.sh
+
+sh infi.sh
+
+//Assg12 portless connection
+
+ubuntu@ip-172-31-32-175:~$ clear
+ubuntu@ip-172-31-32-175:~$ pwd
+/home/ubuntu
+ubuntu@ip-172-31-32-175:~$ cd /
+ubuntu@ip-172-31-32-175:/$ pwd
+/
+ubuntu@ip-172-31-32-175:/$ cd /etc/nginx/sites-available/
+
+ubuntu@ip-172-31-32-175:/etc/nginx/sites-available$ ls
+default
+ubuntu@ip-172-31-32-175:/etc/nginx/sites-available$
+
+sudo nano default
+
+location /  {
+        proxy_pass http://localhost:4000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+copy the above code after server_name;
+
+sudo systemctl restart nginx
+
+now paste the ipv4 address without adding colon 4000 in new tab
+
+then you will see the output hello mckv
+
+asg done 
